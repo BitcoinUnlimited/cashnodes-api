@@ -1,5 +1,3 @@
-require 'redis'
-
 class GetSnapshot
   def self.call(timestamp)
     path = snapshot_path(timestamp)

@@ -1,6 +1,10 @@
 require 'bundler/setup'
 require 'yajl'
+require 'redis'
+require 'hiredis'
 require 'sinatra'
+
+redis_conn = Redis.new(url: ENV['REDIS_URL'], driver: :hiredis)
 
 get '/snapshots' do
   page = params[:page] || 1

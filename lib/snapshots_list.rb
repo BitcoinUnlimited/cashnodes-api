@@ -1,5 +1,3 @@
-require 'redis'
-
 class SnapshotsList
   def self.call(redis_conn, page=1)
     redis_conn.lrange(
