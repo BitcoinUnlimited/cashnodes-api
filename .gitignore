@@ -1,0 +1,10 @@
+/.bundle
+/log/*.log
+/tmp
+pwd
+
+*.swp
+*.swo
+
+/.env
+
