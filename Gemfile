@@ -9,4 +9,6 @@ gem 'hiredis'
 
 group :test do
   gem 'minitest'
+  gem 'rack-test'
+  gem 'byebug'
 end

@@ -28,3 +28,16 @@ Install ruby 2.5.0 and bundler
 ### Running local server
 
     ruby cashnodes_api.rb
+
+
+### Running tests
+
+WARNING: tests will connect to configure redis and flush its content.
+
+    rake test
+
+## Environment variables
+
+- SNAPSHOTS_BASE_DIR: the base dir where snapshots will be found
+
+- REDIS_URL: specify the Redis connection settings
