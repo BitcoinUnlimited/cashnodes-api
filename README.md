@@ -2,6 +2,8 @@
 
 HTTP APIs to serve data about Bitcoin Cash nodes.
 
+[![Build Status](https://travis-ci.org/BitcoinUnlimited/cashnodes-api.svg?branch=master)](https://travis-ci.org/BitcoinUnlimited/cashnodes-api)
+
 ## Available APIs
 
 ### Snpashots list
