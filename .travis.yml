@@ -1,0 +1,6 @@
+language: ruby
+services:
+  - redis-server
+script:
+  - bin/setup
+  - bundle exec rake test
