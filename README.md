@@ -34,7 +34,7 @@ Install ruby 2.5.0 and bundler
 
 WARNING: tests will connect to configure redis and flush its content.
 
-    rake test
+    SNAPSHOTS_BASE_DIR=./tests/fixtures rake test
 
 ## Environment variables
 

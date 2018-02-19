@@ -46,4 +46,14 @@ class CahsnodesAPITest < Minitest::Test
     assert_nil(body['meta']['next'])
     assert_equal(1, body['meta']['prev'])
   end
+
+  def test_get_snapshot_ok
+    get '/snapshots/1'
+    assert_equal(200, last_response.status)
+  end
+
+  def test_get_snapshot_not_found
+    get '/snapshots/2'
+    assert_equal(404, last_response.status)
+  end
 end
