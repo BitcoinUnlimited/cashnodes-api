@@ -4,6 +4,9 @@ require 'redis'
 require 'hiredis'
 require 'sinatra'
 
+require_relative 'lib/snapshots_list'
+require_relative 'lib/get_snapshot'
+
 redis_conn_params = {driver: :hiredis}
 if ENV['REDIS_SOCKET']
   if !File.socket?(ENV['REDIS_SOCKET'])
