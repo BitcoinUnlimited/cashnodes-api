@@ -11,9 +11,9 @@ redis_conn_params = {driver: :hiredis}
 if ENV['REDIS_SOCKET']
   if !File.socket?(ENV['REDIS_SOCKET'])
     raise StandardError('Mis-configured REDIS_SOCKET env var')
-    redis_conn_params[:password] = ENV['REDIS_PASSWORD'] if ENV['REDIS_PASSWORD']
-    redis_conn_params[:path] = ENV['REDIS_URL']
   end
+  redis_conn_params[:password] = ENV['REDIS_PASSWORD'] if ENV['REDIS_PASSWORD']
+  redis_conn_params[:path] = ENV['REDIS_URL']
 elsif ENV['REDIS_URL']
   redis_conn_params[:url] = ENV['REDIS_URL']
 end
