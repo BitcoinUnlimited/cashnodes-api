@@ -4,7 +4,17 @@ require 'redis'
 require 'hiredis'
 require 'sinatra'
 
-redis_conn = Redis.new(url: ENV['REDIS_URL'], driver: :hiredis)
+redis_conn_params = {driver: :hiredis}
+if ENV['REDIS_SOCKET']
+  if !File.socket?(ENV['REDIS_SOCKET'])
+    raise StandardError('Mis-configured REDIS_SOCKET env var')
+    redis_conn_params[:password] = ENV['REDIS_PASSWORD'] if ENV['REDIS_PASSWORD']
+    redis_conn_params[:path] = ENV['REDIS_URL']
+  end
+elsif ENV['REDIS_URL']
+  redis_conn_params[:url] = ENV['REDIS_URL']
+end
+redis_conn = Redis.new(redis_conn_params)
 
 get '/snapshots' do
   page = (params[:page] || 1).to_i

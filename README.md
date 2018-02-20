@@ -42,4 +42,8 @@ WARNING: tests will connect to configure redis and flush its content.
 
 - SNAPSHOTS_BASE_DIR: the base dir where snapshots will be found
 
-- REDIS_URL: specify the Redis connection settings
+- Redis configuration: use either one of the two possible env vars
+
+  + REDIS_URL 
+
+  + REDIS_SOCKET and REDIS_PASSWORD
