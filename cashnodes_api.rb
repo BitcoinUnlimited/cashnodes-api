@@ -2,6 +2,7 @@ require 'bundler/setup'
 require 'yajl'
 require 'redis'
 require 'hiredis'
+require 'rack/cors'
 require 'sinatra'
 
 require_relative 'lib/snapshots_list'
@@ -18,6 +19,13 @@ elsif ENV['REDIS_URL']
   redis_conn_params[:url] = ENV['REDIS_URL']
 end
 redis_conn = Redis.new(redis_conn_params)
+
+use Rack::Cors do
+  allow do
+    origins '*'
+    resource '*', :headers => :any, :methods => [:get, :options]
+  end
+end
 
 get '/snapshots' do
   page = (params[:page] || 1).to_i
