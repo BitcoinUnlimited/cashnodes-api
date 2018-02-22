@@ -27,6 +27,9 @@ use Rack::Cors do
   end
 end
 
+disable :session
+disable :strict_paths
+
 get '/snapshots' do
   page = (params[:page] || 1).to_i
   snapshots = SnapshotsList.call(redis_conn, page)
