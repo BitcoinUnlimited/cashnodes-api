@@ -2,7 +2,6 @@ require_relative '../cashnodes_api'
 require 'minitest/autorun'
 require 'json'
 require 'rack/test'
-require 'redis'
 
 class CahsnodesAPITest < Minitest::Test
   include Rack::Test::Methods

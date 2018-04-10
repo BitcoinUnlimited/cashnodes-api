@@ -1,8 +1,4 @@
 language: ruby
-services:
-  - redis-server
-env:
-  - SNAPSHOTS_BASE_DIR=$TRAVIS_BUILD_DIR/tests/fixtures
 script:
   - bin/setup
   - bundle exec rake test
