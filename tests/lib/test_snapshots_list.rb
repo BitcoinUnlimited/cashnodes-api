@@ -14,6 +14,11 @@ describe SnapshotsList do
         end
       end
     end
+
+    it 'orders from newest to oldest' do
+      snapshots = SnapshotsList.call()[:snapshots]
+      snapshots.must_equal ["2", "1"]
+    end
   end
 
   describe 'with a specific page' do

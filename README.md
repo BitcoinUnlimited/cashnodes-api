@@ -34,7 +34,7 @@ Install ruby 2.5.0 and bundler
 
 ### Running tests
 
-    rake test
+    SNAPSHOTS_BASE_DIR=./tests/fixtures rake test
 
 ## Environment variables
 
