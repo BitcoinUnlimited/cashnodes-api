@@ -76,7 +76,6 @@ GEM
     haml (5.0.4)
       temple (>= 0.8.0)
       tilt
-    hiredis (0.6.1)
     json (1.8.6)
     json_pure (1.8.6)
     justify (1.0.2)
@@ -93,7 +92,6 @@ GEM
     rack-test (0.8.2)
       rack (>= 1.0, < 3)
     rake (12.3.0)
-    redis (4.0.1)
     ruby_parser (3.11.0)
       sexp_processor (~> 4.9)
     sexp_processor (4.10.1)
@@ -122,12 +120,10 @@ DEPENDENCIES
   bundler-audit
   byebug
   dawnscanner
-  hiredis
   minitest
   rack-cors
   rack-test
   rake
-  redis
   sinatra
   yajl-ruby
 

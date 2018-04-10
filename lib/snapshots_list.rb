@@ -1,21 +1,37 @@
 class SnapshotsList
-  def self.call(redis_conn, page=1)
+  def self.call(page=1)
+    tot_snapshots = snapshots_count
     {
-      snapshots: redis_conn.lrange(
-        SNAPSHOTS_KEY,
-        (page - 1) * PER_PAGE,
-        page * PER_PAGE - 1),
-      meta: pagination_meta(redis_conn, page)
+      snapshots: snapshots(page),
+      meta: pagination_meta(page, tot_snapshots)
     }
   end
 
   private
 
-  SNAPSHOTS_KEY = 'dumped_snapshots'
-  PER_PAGE = 100
+  PER_PAGE = 10
 
-  def self.pagination_meta(redis_conn, page)
-    len = redis_conn.llen(SNAPSHOTS_KEY)
+  def self.base_dir
+    ENV['SNAPSHOTS_BASE_DIR']
+  end
+
+  def self.snapshot_paths
+    "#{base_dir}/*.json"
+  end
+
+  def self.snapshots_count
+    Dir[snapshot_paths].size
+  end
+
+  def self.snapshots(page=1)
+    all_snapshots = Dir[snapshot_paths].sort_by{ |f| File.mtime(f) }.reverse
+    all_snapshots[((page - 1) * PER_PAGE)..(page * PER_PAGE  - 1)].collect do |f|
+      File.basename(f).split('.')[0]
+    end
+  end
+
+  def self.pagination_meta(page, count=nil)
+    len = count || snapshots_count
     pages = (len / PER_PAGE.to_f).ceil
     meta = {page: page, total_pages: pages, total: len}
 
