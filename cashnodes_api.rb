@@ -46,7 +46,7 @@ get '/snapshots' do
 end
 
 get '/snapshots/:timestamp' do
-  snapshot_path = GetSnapshot.call(params[:timestamp])
+  snapshot_path = GetSnapshot.call(params[:timestamp], logger)
   if snapshot_path.nil?
     logger.info("snapshot #{params[:timestamp]} not found")
     return [404, Yajl::Encoder.encode({error: 'snapshot not found'})]

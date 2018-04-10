@@ -48,12 +48,18 @@ class CahsnodesAPITest < Minitest::Test
   end
 
   def test_get_snapshot_ok
-    get '/snapshots/1'
-    assert_equal(200, last_response.status)
+    Tempfile.open('foo') do |file|
+      GetSnapshot.stub(:call, file.path) do
+        get '/snapshots/1'
+        assert_equal(200, last_response.status)
+      end
+    end
   end
 
   def test_get_snapshot_not_found
-    get '/snapshots/2'
-    assert_equal(404, last_response.status)
+    GetSnapshot.stub(:call, nil) do
+      get '/snapshots/2'
+      assert_equal(404, last_response.status)
+    end
   end
 end
