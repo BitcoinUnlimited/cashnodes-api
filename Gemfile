@@ -4,7 +4,7 @@ gem 'rake'
 gem 'sinatra', '~> 2.0.2'
 gem 'yajl-ruby'
 
-gem 'rack-cors'
+gem 'rack-cors', '~> 1.0.5'
 
 group :test do
   gem 'minitest'
