@@ -1,3 +1,7 @@
+# The project has migrated over to GitLab.com
+
+## see https://gitlab.com/bitcoinunlimited/cashnodes-api
+
 # cashnodes HTTP API
 
 HTTP APIs to serve data about Bitcoin Cash nodes.
