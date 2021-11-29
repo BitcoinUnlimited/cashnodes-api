@@ -31,6 +31,12 @@ get '/snapshots' do
   [200, Yajl::Encoder.encode(snapshots)]
 end
 
+get '/latest' do
+  snapshot = SnapshotsList.latest_snapshot()
+  content_type :json
+  send_file(snapshot)
+end
+
 get '/snapshots/:timestamp' do
   snapshot_path = GetSnapshot.call(params[:timestamp], logger)
   if snapshot_path.nil?

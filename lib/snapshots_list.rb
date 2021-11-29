@@ -7,6 +7,11 @@ class SnapshotsList
     }
   end
 
+  def self.latest_snapshot()
+    latest_path = Dir[snapshot_paths].sort_by{ |f| File.mtime(f) }.reverse[0]
+    #latest = File.basename(latest_path).split('.')[0]
+  end
+
   private
 
   PER_PAGE = 10
