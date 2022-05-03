@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rake'
-gem 'sinatra', '~> 2.0.2'
+gem 'sinatra', '~> 2.2.0'
 gem 'yajl-ruby'
 
 gem 'rack-cors', '~> 1.0.5'
